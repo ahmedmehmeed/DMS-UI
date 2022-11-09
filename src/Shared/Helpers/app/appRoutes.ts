@@ -22,33 +22,6 @@ export const appRoutes = {
          }
      },
 
-     home: {
-      full: "home",
-      main: "home",
-      sub: "",
- 
-      userDetails: {
-         full: "home/user/",
-         main: "user/:id",
-         sub: ""
-      },  
-      userEdit: {
-         full: "home/profile/",
-         main: "profile/:id",
-         sub: ""
-      },  
 
-         },
-
-       MembersChat:{
-         full: "chat",
-         main: "chat",
-         sub: "",
-         userDetails: {
-            full: "chat/member/",
-            main: "chat/:id",
-            sub: ""
-         }, 
-       }  
 
 }

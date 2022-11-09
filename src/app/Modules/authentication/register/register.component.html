@@ -1,0 +1,123 @@
+<div class="account-pages pt-3">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="text-center">
+                            <a href="index.html" class="auth-logo  d-block">
+                                <img src="assets/images/logo-dark.png" alt="" height="30" class="logo logo-dark">
+                                <img src="assets/images/logo-light.png" alt="" height="30" class="logo logo-light">
+                            </a>
+                            <p class="text-muted">Get your Chat account now.</p> 
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body p-4">
+                                <div class="p-3">
+                                    <form [formGroup]="RegisterForm" novalidate>
+
+                                        <div class="row">
+                            <div class="col-6">
+    
+                                <div class="mb-3">
+                                    <label class="form-label">Username</label>
+                                    <div class="input-group bg-soft-light rounded-3">
+                                        <span class="input-group-text border-light text-muted" id="basic-addon6">
+                                            <i class="ri-user-2-line"></i>
+                                        </span>
+                                        <input 
+                                        [ngClass]="{ 'is-invalid': isRegistered && RegisterControls.userName.errors || RegisterControls.userName.touched && RegisterControls.userName.errors}"
+                                        formControlName="userName"
+                                        type="text" class="form-control  bg-soft-light border-light" 
+                                        placeholder="Enter Username" aria-label="Enter Username"
+                                        aria-describedby="basic-addon6">
+                                    </div>
+                                    <div *ngIf="isRegistered && RegisterControls.userName.errors || RegisterControls.userName.touched && RegisterControls.userName.errors">
+                                        <small class="invalid-feedback" *ngIf="RegisterControls.userName.errors.required">
+                                          Username Is Required
+                                        </small>                    
+                                      </div>
+                                </div>
+                            </div>
+                                         </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Email</label>
+                                            <div class="input-group bg-soft-light rounded-3">
+                                                <span class="input-group-text text-muted" id="basic-addon5">
+                                                    <i class="ri-mail-line"></i>
+                                                </span>
+                                                <input 
+                                                formControlName="email"
+                                                [ngClass]="{ 'is-invalid': isRegistered && RegisterControls.email.errors || RegisterControls.email.touched && RegisterControls.email.errors}"
+                                                 type="email"
+                                                  class="form-control  bg-soft-light border-light"
+                                                   placeholder="Enter Email" aria-label="Enter Email"
+                                                    aria-describedby="basic-addon5">
+                                                
+                                            </div>
+                                            <div *ngIf="isRegistered && RegisterControls.email.errors || RegisterControls.email.touched && RegisterControls.email.errors">
+                                                <small class="invalid-feedback" *ngIf="RegisterControls.email.errors.required">
+                                                  Email Is Required
+                                                </small>
+                                                <div class="invalid-feedback" *ngIf="RegisterControls.email.errors.email">
+                                                  Email Is Invalid
+                                                </div>                     
+                                              </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <label class="form-label">Password</label>
+                                            <div class="input-group bg-soft-light rounded-3">
+                                                <span class="input-group-text border-light text-muted" id="basic-addon7">
+                                                    <i class="ri-lock-2-line"></i>
+                                                </span>
+                                                <input
+                                                 formControlName="password" 
+                                                 [ngClass]="{ 'is-invalid': isRegistered && RegisterControls.password.errors || RegisterControls.password.touched && RegisterControls.password.errors}"
+                                                 type="password"
+                                                 class="form-control bg-soft-light border-light"
+                                                 placeholder="Enter Password" 
+                                                 aria-label="Enter Password"
+                                                 aria-describedby="basic-addon7">
+                                                
+                                            </div>
+                                            <div *ngIf="isRegistered && RegisterControls.password.errors || RegisterControls.password.touched && RegisterControls.password.errors">
+                                                <small class="invalid-feedback" *ngIf="RegisterControls.password.errors.required">
+                                                  Password Is Required
+                                                </small> 
+
+                                                <small class="invalid-feedback" *ngIf="RegisterControls.password.errors.passwordStrength">
+                                                    Password must contain : numbers, lowercase letters, uppercase letters, and special characters.
+                                                  </small>                          
+                                            </div>
+                                        </div>
+
+
+                                        <div class="d-grid">
+                                            <button class="btn btn-primary waves-effect waves-light"  (click)="register()" [disabled]="RegisterForm.invalid || !RegisterForm.dirty">
+                                                Sign up      <span
+                                                *ngIf="isRegistered"
+                                                class="spinner-border spinner-border-sm"
+                                                role="status"
+                                                aria-hidden="true"
+                                              ></span>
+                                            </button>
+                                        </div>
+
+                                        <div class="mt-4 text-center">
+                                            <p class="text-muted mb-0">By registering you agree to the Chat <a href="#" class="text-primary">Terms of Use</a></p>
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5 text-center">
+                            <p>Already have an account ? <a [routerLink]="['/login']" class="fw-medium text-primary"> Signin </a> </p>
+                            <p>© <script>document.write(new Date().getFullYear())</script> DMS Demo  <i class="mdi mdi-heart text-danger"></i> by Ahmed Ali</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

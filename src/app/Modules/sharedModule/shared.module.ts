@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../../Shared/Components/layout/header/header.component';
 import { FooterComponent } from '../../../Shared/Components/layout/footer/footer.component';
 import { LayoutComponent } from '../../../Shared/Components/layout/layout.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { LayoutComponent } from '../../../Shared/Components/layout/layout.compon
   imports: [
     CommonModule,
     RouterModule,
-
+    ToastrModule.forRoot({positionClass:'toast-bottom-right'}),
+    ToastrModule,
   ],
   exports:[
 

@@ -8,6 +8,7 @@ import { ApiRoutes } from '../../Helpers/app/apiRoutes';
 import { appRoutes } from '../../Helpers/app/appRoutes';
 import { LocalStorageKeys } from '../../Helpers/app/LocalStorageKeys';
 import{login} from '../../Models/Auth/login';
+import{register} from '../../Models/Auth/register'
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +27,23 @@ return this.http.post(this.apiUrl+ApiRoutes.account.login,login).pipe(
       localStorage.setItem(LocalStorageKeys.UserId,res.userId)
       this.setLogedIn(true)
       console.log(this.isLogedIn.value)
-      this.router.navigate([appRoutes.home.full]);
+/*       this.router.navigate([appRoutes.home.full]); */
     }
   })
 )
 }
 
+register(register:register){
+  return this.http.post(this.apiUrl+ApiRoutes.account.register,register).pipe(
+    tap((res:any)=>{
+      if(res.isSuccess){
+        localStorage.setItem(LocalStorageKeys.JWT,res.token)
+        this.setLogedIn(true)
+/*         this.router.navigate([appRoutes.home.full]); */
+      }
+    })
+  )
+  }
 
 
 logout(){

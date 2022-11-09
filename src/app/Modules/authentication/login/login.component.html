@@ -1,0 +1,134 @@
+<div class="account-pages my-5 pt-sm-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-5">
+        <div class="text-center mb-4">
+          <a href="index.html" class="auth-logo mb-5 d-block">
+            <img
+              src="assets/images/logo-dark.png"
+              alt=""
+              height="30"
+              class="logo logo-dark"
+            />
+            <img
+              src="assets/images/logo-light.png"
+              alt=""
+              height="30"
+              class="logo logo-light"
+            />
+          </a>
+
+          <h4>Sign in</h4>
+          <p class="text-muted mb-4">Sign in to continue to Chat.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-body p-4">
+            <div class="p-3">
+              <form [formGroup]="LoginForm" class="row g-3 needs-validation" novalidate >
+                <div class="col-12">
+                  <!-- <label for="validationCustomUsername" class="form-label">Email</label> -->
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend"
+                      >@</span
+                    >
+                    <input
+                      formControlName="email"
+                      type="text"
+                      class="form-control"
+                      id="validationCustomUsername"
+                      placeholder="Please Enter an Email"
+                      aria-label="Please Enter an Email"
+                      aria-describedby="inputGroupPrepend"
+                      [ngClass]="{ 'is-invalid': isSubmittedlogin && loginControls.email.errors || loginControls.email.touched && loginControls.email.errors  }"
+                      required
+                    />
+                  </div>
+                  <div *ngIf="isSubmittedlogin && loginControls.email.errors || loginControls.email.touched && loginControls.email.errors ">
+                    <div class="invalid-feedback" *ngIf="loginControls.email.errors.required">
+                      Email Is Required
+                    </div>
+                    <div class="invalid-feedback" *ngIf="loginControls.email.errors.email">
+                      Email Is Invalid
+                    </div>                     
+                  </div>
+                </div>
+                <div class="input-group">
+                  <span class="input-group-text text-muted" id="basic-addon4">
+                    <i class="ri-lock-2-line"></i>
+                  </span>
+                  <input
+                    formControlName="password"
+                    type="password"
+                    class="form-control"
+                    placeholder="Enter Password"
+                    aria-label="Enter Password"
+                    [ngClass]="{ 'is-invalid': isSubmittedlogin && loginControls.password.errors || loginControls.password.touched && loginControls.password.errors  }"
+                    required
+                  />
+                </div>
+                <div *ngIf=" isSubmittedlogin && loginControls.password.errors || loginControls.password.touched && loginControls.password.errors ">
+                  <div  class="invalid-feedback" *ngIf="loginControls.password.errors.required">
+                       Password Is Required
+                  </div>
+                  <div  class="invalid-feedback" *ngIf="loginControls.password.errors.PasswordStrengthValidator">
+                    Password Is Invalid
+                 </div>
+                </div>
+
+                <div class="form-check mb-4">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="remember-check"
+                  />
+                  <label class="form-check-label" for="remember-check"
+                    >Remember me</label
+                  >
+                </div>
+                <!--                 <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                      Agree to terms and conditions
+                    </label>
+                    <div class="invalid-feedback">
+                      You must agree before submitting.
+                    </div>
+                  </div>
+                </div> -->
+                <div class="col-12">
+                  <button
+                    class="btn btn-primary waves-effect waves-light login-btn "
+                    type="submit"
+                    (click)="login()" [disabled]="!LoginForm.valid" >
+                    Sign in              <span *ngIf="isSubmittedlogin" class="spinner-border spinner-border-sm" role="status"
+                    aria-hidden="true"></span>
+                  </button>
+                </div>
+    <!--             <div class="col-12 g-signin2" data-onsuccess="onSignIn" data-longtitle="true">goole</div> -->
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 text-center">
+          <p>
+            Don't have an account ?
+            <a class="fw-medium text-primary" [routerLink]="['/register']">
+              Signup now
+            </a>
+          </p>
+          <p>
+            ©
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            Chatvia <i class="mdi mdi-heart text-danger"></i> by
+            Ahmed Ali
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

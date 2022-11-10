@@ -9,5 +9,9 @@ export const content: Routes = [
      {
         path: appRoutes.Authentication.full,
         loadChildren: () => import("../../app/Modules/authentication/authentication.module").then((m) => m.AuthenticationModule), 
+     },
+     {
+      path: appRoutes.orders.full,
+      loadChildren: () => import("../../app/Modules/orders/orders.module").then((m) => m.OrdersModule), 
      }
 ];

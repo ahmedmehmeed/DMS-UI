@@ -5,6 +5,10 @@ account:{
 },
 item:{
     items:'Item/GetAllItems'
+},
+order:{
+    orders:'Order/GetAllOrders',
+    addOrder:'Order/AddOrder?itemId='
 }
 
 }

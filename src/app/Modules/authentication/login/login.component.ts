@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../../Shared/Services/Auth/authservice';
 
 
@@ -22,6 +23,7 @@ isSubmittedlogin:boolean=false;
     private authService:AuthService,
     private formBuilder: FormBuilder,
     private router:Router,
+    private toastr:ToastrService
     ) { }
 
 
@@ -68,8 +70,13 @@ isSubmittedlogin:boolean=false;
       this.isloggedIn=true;
       console.log(res)
       this.isSubmittedlogin=false;
+
     },
-    (err)=>{   this.isSubmittedlogin=false;}
+    (err)=>{  
+       this.isSubmittedlogin=false;
+       this.toastr.error(err)
+       console.log(err.value)
+      }
    )
   }
 

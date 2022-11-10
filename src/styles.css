@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+/* *** Validation span ** */
+.invalid-feedback {
+    display: block;
+}
+
+.valid-feedback {
+    display: block;
+}
+
+.is-invalid{
+border-color: #dc3545 !important;
+}

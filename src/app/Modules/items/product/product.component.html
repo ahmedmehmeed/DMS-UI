@@ -1,0 +1,76 @@
+
+        <!--New Arrivals-->
+        <div class="product-rows section">
+        	<div class="container">
+            	<div class="row">
+                	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        				<div class="section-header text-center">
+                            <h2 class="h2">New Arrivals</h2>
+                            <p>Grab these new items before they are gone!</p>
+                        </div>
+            		</div>
+                </div>
+	            <div class="grid-products">
+                	<div class="row" >
+                        <div class="col-6 col-sm-2 col-md-3 col-lg-3 item" *ngFor="let item of items">
+                            <!-- start product image -->
+                            <div class="product-image">
+                                <!-- start product image -->
+                                <a href="product-layout-1.html" class="grid-view-item__link">
+                                    <!-- image -->
+                                    <img  data-src="assets/images/product-images/product-image1.jpg" src="../../../../assets/images/default-product-image-2.png" alt="image" title="product">
+                                    <!-- End image -->
+                                    <!-- Variant Image-->
+                                    <!-- product label -->
+                                    <div class="product-labels rounded"><span class="lbl on-sale">Sale</span> <span class="lbl pr-label1">new</span></div>
+                                    <!-- End product label -->
+                                </a>
+                                <!-- end product image -->
+                                
+                                <!-- countdown start -->
+                                <div class="saleTime desktop" data-countdown="2022/03/01"></div>
+                                <!-- countdown end -->
+    
+                                <!-- Start product button -->
+                                <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
+                                    <button class="btn btn-addto-cart bg-success" type="button" tabindex="0">Order Now</button>
+                                </form>
+
+                                <!-- end product button -->
+                            </div>
+                            <!-- end product image -->
+                            <!--start product details -->
+                            <div class="product-details text-center">
+                                <!-- product name -->
+                                <div class="product-name">
+                                    <h3>{{item.name}}</h3>
+                                    <p> {{item.description}}</p>
+                                </div>
+                                <!-- End product name -->
+                                <!-- product price -->
+                                <div class="product-price">
+                                    <span class="price text-warning">${{item.price}}</span>
+                                </div>
+
+                                <div class="product-price">
+                                    <span class="price text-info">({{item.qty}}) In Stock</span>
+                                </div>
+                            </div>
+                            <!-- End product details -->
+                        </div>
+
+    
+                    </div>
+                </div>
+           </div>
+        </div>	
+        <!--End Featured Product-->
+
+        <ngx-spinner
+        bdColor="rgba(51,51,51,0.8)"
+        size="medium"
+        color="#fff"
+        type="ball-scale-multiple"
+        >
+        <p style="font-size: 20px; color: white">Loading...</p>
+        </ngx-spinner>

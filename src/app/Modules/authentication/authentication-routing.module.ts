@@ -5,10 +5,15 @@ import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
+
 const routes: Routes = [
   {
     path: "",
     children: [
+      {
+        path: appRoutes.Authentication.error.main,
+        component: ErrorComponent,
+      },
       {
         path: appRoutes.Authentication.login.main,
         component: LoginComponent,
@@ -16,11 +21,7 @@ const routes: Routes = [
       {
         path: appRoutes.Authentication.register.main,
         component: RegisterComponent,
-      },
-      {
-        path: appRoutes.Authentication.error.main,
-        component: ErrorComponent,
-      },
+      }
     ],
   },
 ];

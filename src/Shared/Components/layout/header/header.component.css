@@ -1,0 +1,23 @@
+.modal-backdrop.show {
+    opacity: 0 !important;
+}
+
+element.style {
+    z-index: 1055;
+}
+.modal-backdrop.show {
+    /* opacity: .5; */
+}
+.modal-backdrop.fade {
+    opacity: 0;
+}
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    opacity: 0 !important ;
+    background-color: #000;
+}

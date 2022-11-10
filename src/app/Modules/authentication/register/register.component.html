@@ -16,13 +16,13 @@
                                     <form [formGroup]="RegisterForm" novalidate>
 
                                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12">
     
                                 <div class="mb-3">
                                     <label class="form-label">Username</label>
                                     <div class="input-group bg-soft-light rounded-3">
                                         <span class="input-group-text border-light text-muted" id="basic-addon6">
-                                            <i class="ri-user-2-line"></i>
+                                            <i class="fa fa-user" aria-hidden="true"></i>
                                         </span>
                                         <input 
                                         [ngClass]="{ 'is-invalid': isRegistered && RegisterControls.userName.errors || RegisterControls.userName.touched && RegisterControls.userName.errors}"
@@ -44,7 +44,7 @@
                                             <label class="form-label">Email</label>
                                             <div class="input-group bg-soft-light rounded-3">
                                                 <span class="input-group-text text-muted" id="basic-addon5">
-                                                    <i class="ri-mail-line"></i>
+                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
                                                 </span>
                                                 <input 
                                                 formControlName="email"
@@ -69,7 +69,7 @@
                                             <label class="form-label">Password</label>
                                             <div class="input-group bg-soft-light rounded-3">
                                                 <span class="input-group-text border-light text-muted" id="basic-addon7">
-                                                    <i class="ri-lock-2-line"></i>
+                                                    <i class="fa fa-key" aria-hidden="true"></i>
                                                 </span>
                                                 <input
                                                  formControlName="password" 
@@ -91,21 +91,22 @@
                                                   </small>                          
                                             </div>
                                         </div>
+<div class="row">   
+    <div class="col-12">
+        <button class="btn btn-primary waves-effect waves-light w-100"  (click)="register()" [disabled]="RegisterForm.invalid || !RegisterForm.dirty">
+            Sign up      <span
+            *ngIf="isRegistered"
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
+        </button>
+    </div>
+</div>
 
-
-                                        <div class="d-grid">
-                                            <button class="btn btn-primary waves-effect waves-light"  (click)="register()" [disabled]="RegisterForm.invalid || !RegisterForm.dirty">
-                                                Sign up      <span
-                                                *ngIf="isRegistered"
-                                                class="spinner-border spinner-border-sm"
-                                                role="status"
-                                                aria-hidden="true"
-                                              ></span>
-                                            </button>
-                                        </div>
 
                                         <div class="mt-4 text-center">
-                                            <p class="text-muted mb-0">By registering you agree to the Chat <a href="#" class="text-primary">Terms of Use</a></p>
+                                            <p class="text-muted mb-0">By registering you agree to the DMS Demo <a href="#" class="text-primary">Terms of Use</a></p>
                                         </div>
                                         
                                     </form>

@@ -3,5 +3,8 @@ account:{
     login:'Account/Login',
     register:'Account/Register',
 },
+item:{
+    items:'Item/GetAllItems'
+}
 
 }

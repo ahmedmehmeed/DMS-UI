@@ -27,7 +27,7 @@ return this.http.post(this.apiUrl+ApiRoutes.account.login,login).pipe(
       localStorage.setItem(LocalStorageKeys.UserId,res.userId)
       this.setLogedIn(true)
       console.log(this.isLogedIn.value)
-/*       this.router.navigate([appRoutes.home.full]); */
+    this.router.navigate([appRoutes.items.full]); 
     }
   })
 )
@@ -39,7 +39,7 @@ register(register:register){
       if(res.isSuccess){
         localStorage.setItem(LocalStorageKeys.JWT,res.token)
         this.setLogedIn(true)
-/*         this.router.navigate([appRoutes.home.full]); */
+        this.router.navigate([appRoutes.items.full]);  
       }
     })
   )
@@ -49,7 +49,7 @@ register(register:register){
 logout(){
   this.setLogedIn(false)
   localStorage.removeItem(LocalStorageKeys.JWT)
-  this.router.navigate([appRoutes.Authentication.login.main]);
+  this.router.navigate([appRoutes.items.sub]);
 }
 
 setLogedIn(isLogedIn:boolean){

@@ -52,7 +52,8 @@ export class RegisterComponent implements OnInit {
     this.isRegistered=true
     this.authService.register(this.RegisterForm.value).subscribe(
      (res)=>{
-       this.toastr.success("You have successfully created your account. Please check your email for confirmation")
+       this.toastr.success("You have successfully created your account")
+       this.router.navigate([appRoutes.Authentication.login]);  
      },
      ()=>{ this.isRegistered=false;},
      ()=>{

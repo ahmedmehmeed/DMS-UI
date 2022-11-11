@@ -13,4 +13,15 @@ export class FooterComponent implements OnInit {
    
 
   }
+
+
+  scrollToTop(): void {
+    // scroll to the top of the body
+    return document.body.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'start',
+    });
+  }
+
 }

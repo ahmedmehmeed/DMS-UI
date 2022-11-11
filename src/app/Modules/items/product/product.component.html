@@ -16,7 +16,7 @@
                             <!-- start product image -->
                             <div class="product-image">
                                 <!-- start product image -->
-                                <a href="product-layout-1.html" class="grid-view-item__link">
+                                <a href=" " class="grid-view-item__link">
                                     <!-- image -->
                                     <img  data-src="assets/images/product-images/product-image1.jpg" src="../../../../assets/images/default-product-image-2.png" alt="image" title="product">
                                     <!-- End image -->
@@ -33,7 +33,10 @@
     
                                 <!-- Start product button -->
                                 <form class="variants add" >
-                                    <button (click)="addOrder(item)" class="btn btn-addto-cart bg-success" type="button" tabindex="0">Order Now</button>
+                                    <button (click)="addOrder(item)" class="btn btn-addto-cart bg-success" ngbTooltip="{{!isLogedIn?'Please login or register before':'Click to add order '}}" type="button" tabindex="0">
+                                        Order Now <span *ngIf="isAddOrder" class="spinner-border spinner-border-sm" role="status"
+                                        aria-hidden="true"></span>
+                                    </button>
                                 </form>
 
                                 <!-- end product button -->

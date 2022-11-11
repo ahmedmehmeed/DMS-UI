@@ -33,15 +33,13 @@ export class HeaderComponent implements OnInit {
     // Watch authentication status changes
     this.authService.getLogedIn().subscribe((isLoggedIn) => {
       this.isLogedIn = isLoggedIn;
-      console.log("cvsdfb",this.isLogedIn)
     });
   } 
 
   private watchrRolesState(): void {
-    // Watch authentication status changes
+    // Watch roles status changes
     this.authService.getRoles().subscribe((isAdmin) => {
       this.isAdmin = isAdmin;
-      console.log("roles",this.isAdmin)
     });
   } 
 

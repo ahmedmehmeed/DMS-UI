@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { appRoutes } from '../../../../Shared/Helpers/app/appRoutes';
 import { item } from '../../../../Shared/Models/Item/item';
+import { AuthService } from '../../../../Shared/Services/Auth/authservice';
 import { ItemService } from '../../../../Shared/Services/Item/item.service';
 import { OrderService } from '../../../../Shared/Services/Order/order.service';
 
@@ -16,7 +19,9 @@ export class ProductComponent implements OnInit {
     private itemsService:ItemService,
     private toastr:ToastrService,
     private spinner: NgxSpinnerService ,
-    private orderService:OrderService
+    private orderService:OrderService,
+    private authService:AuthService,
+    private router :Router
     ) { }
 
   /*   State */
@@ -24,10 +29,12 @@ export class ProductComponent implements OnInit {
 
    /*  UI */
    isLoading:boolean=true;
-
+   isLogedIn:boolean;
+   isAddOrder:boolean;
 
   ngOnInit(): void {
     this.getItems();
+    this.watchLoginState();
   }
 
 
@@ -47,13 +54,28 @@ export class ProductComponent implements OnInit {
   }
 
   addOrder(item:item){
-  this.orderService.AddOrder(item.id).subscribe(
-    (res)=>{
-    this.toastr.success("Order Add Successfully!")
-    },
-    (err)=>{
-      this.toastr.error("Failed To Add Order !")
+    if(this.isLogedIn){
+      this.isAddOrder=true;
+      this.orderService.AddOrder(item.id).subscribe(
+        (res)=>{
+        this.toastr.success("Order Add Successfully!")
+        this.isAddOrder=false;
+        },
+        (err)=>{
+          this.toastr.error("Failed To Add Order !")
+        }
+      )
     }
-  )
+  else{
+this.router.navigate[appRoutes.Authentication.login.full];
+   }
   }
+
+  private watchLoginState(): void {
+    // Watch authentication status changes
+    this.authService.getLogedIn().subscribe((isLoggedIn) => {
+      this.isLogedIn = isLoggedIn;
+    });
+  } 
+
 }

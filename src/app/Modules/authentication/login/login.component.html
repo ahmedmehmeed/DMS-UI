@@ -2,6 +2,10 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6 col-xl-5">
+        <div *ngFor="let alert of loginErrors">
+          <alert [type]="alert.type" [dismissible]="dismissible" (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+        </div>
+
         <div class="text-center mb-4">
           <a href="index.html" class="auth-logo mb-5 d-block">
             <img

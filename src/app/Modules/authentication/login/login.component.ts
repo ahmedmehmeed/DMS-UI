@@ -14,10 +14,10 @@ export class LoginComponent implements OnInit {
 
   
 /*   UI */
-
 isloggedIn:boolean=false;
 isSubmittedlogin:boolean=false;
-
+loginErrors:any[];
+dismissible = true;
 
   constructor( 
     private authService:AuthService,
@@ -74,12 +74,15 @@ isSubmittedlogin:boolean=false;
     },
     (err)=>{  
        this.isSubmittedlogin=false;
+       this.loginErrors=err
        this.toastr.error(err)
-       console.log(err.value)
       }
    )
   }
-
+  
+  onClosed(dismissedAlert: any): void {
+    this.loginErrors = this.loginErrors.filter(alert => alert !== dismissedAlert);
+  }
 
 
 }

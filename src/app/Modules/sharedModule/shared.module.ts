@@ -29,7 +29,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ReactiveFormsModule,
     ModalModule.forRoot(),
     NgbModule,
-    NgSelectModule
+    NgSelectModule,
   ],
   exports:[
     ToastrModule,
@@ -39,7 +39,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ReactiveFormsModule,
     ModalModule,
     NgbModule,
-    NgSelectModule
+    NgSelectModule,
+    AlertModule
   ]
 })
 export class SharedModule { }

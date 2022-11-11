@@ -7,11 +7,11 @@
 
 /* *** Validation span ** */
 .invalid-feedback {
-    display: block;
+    display: block !important;
 }
 
 .valid-feedback {
-    display: block;
+    display: block !important;
 }
 
 .is-invalid{

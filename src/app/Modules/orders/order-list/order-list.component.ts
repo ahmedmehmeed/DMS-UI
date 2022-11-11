@@ -20,7 +20,7 @@ export class OrderListComponent implements OnInit {
   columnDefs = [
     {
       headerName: "#",
-      valueGetter: function (params) {
+      valueGetter: function (params:any) {
         return params.node.rowIndex + 1;
       },
       sortable: false,
@@ -100,7 +100,7 @@ export class OrderListComponent implements OnInit {
     paginationPageSize: this.filter.pageSize,
   };
 
-  onGridReady(params) {
+  onGridReady(params:any) {
     this.gridApi = params.api;
     this.gridApi.sizeColumnsToFit();
     this.gridApi.setDatasource(this.dataSource);

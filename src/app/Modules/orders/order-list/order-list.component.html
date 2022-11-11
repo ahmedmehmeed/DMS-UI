@@ -1,1 +1,60 @@
-<p>order-list works!</p>
+<div class="row mx-5">
+    <div id="settingprofile" class="accordion">
+       <div class="accordion-item card border my-2">
+         <div class="accordion-header" id="personalinfo1">
+           <button
+             class="accordion-button"
+             type="button"
+             data-bs-toggle="collapse"
+             data-bs-target="#personalinfo"
+             aria-expanded="false"
+             aria-controls="personalinfo"
+           >
+             <h5 class="font-size-14 m-0">Advanced Search</h5>
+           </button>
+         </div>
+         <div
+           id="personalinfo"
+           class="accordion-collapse collapse show"
+           aria-labelledby="personalinfo1"
+           data-bs-parent="#settingprofile"
+         >
+           <div class="accordion-body">
+            <div class="row justify-content-between">
+                <div class="col-md-6 col-lg-2">
+                    <p class="text-muted mb-1">Item Name</p>
+                     <label class="switch">
+                        <input type="text" [(ngModel)]="filter.itemName" (change)="filterOrders()">
+                        <span class="slider round"></span>
+                      </label>
+                </div>
+                 <div class="col-md-6 col-lg-2">
+                    <p class="text-muted mb-1">Customer Name</p>
+                     <label class="switch">
+                        <input type="text" [(ngModel)]="filter.username" (change)="filterOrders()">
+                        <span class="slider round"></span>
+                      </label>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <p class="text-muted mb-1">Item Price</p>
+                     <label class="switch">
+                        <input type="number" [(ngModel)]="filter.itemPrice" (change)="filterOrders()" min="1" >
+                        <span class="slider round"></span>
+                      </label>
+                </div>
+            </div>                    
+           </div>
+        </div>
+       </div>
+    </div>
+</div> 
+
+<div class="m-5 row">
+    <ag-grid-angular [gridOptions]="gridOptions" (gridReady)="onGridReady($event)"
+    (paginationChanged)="onPaginationChanged($event)" 
+    style="width: 100%; height: 50em;margin-bottom: 55px;"
+    class="ag-theme-alpine" [columnDefs]="columnDefs">
+    </ag-grid-angular>
+</div>
+
+

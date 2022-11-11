@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { appRoutes } from '../../../../Shared/Helpers/app/appRoutes';
 import { PasswordStrengthValidator } from '../../../../Shared/Helpers/validators/password-strength-validator';
 import { AuthService } from '../../../../Shared/Services/Auth/authservice';
 
@@ -15,7 +17,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private authService:AuthService,
     private formBuilder: FormBuilder,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -47,13 +50,15 @@ export class RegisterComponent implements OnInit {
    
    register(){
     this.isRegistered=true
-    console.log("this.RegisterForm.value",this.RegisterForm.value)
-   this.authService.register(this.RegisterForm.value).subscribe(
+    this.authService.register(this.RegisterForm.value).subscribe(
      (res)=>{
        this.toastr.success("You have successfully created your account. Please check your email for confirmation")
      },
      ()=>{ this.isRegistered=false;},
-     ()=>{ this.isRegistered=false;}
+     ()=>{
+       this.isRegistered=false;
+       this.router.navigate([appRoutes.items.full]);  
+      }
     )
    }
 }

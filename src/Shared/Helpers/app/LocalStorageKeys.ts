@@ -1,6 +1,6 @@
 export  enum LocalStorageKeys{
 //APP
 JWT = 'app:jwt',
-UserId='UserId'
-
+UserId='UserId',
+Roles="UserRoles"
 }

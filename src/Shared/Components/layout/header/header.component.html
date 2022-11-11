@@ -20,9 +20,9 @@
                 <div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
                 	<span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
                     <ul class="customer-links list-inline">
-                        <li><a [routerLink]="['/authentication/login']" *ngIf="!userToken" >Login</a></li>
-                        <li><a [routerLink]="['/authentication/register']"  *ngIf="!userToken">Create Account</a></li>
-                        <li><a [routerLink]="['']" (click)="logout()" *ngIf="userToken">Log out</a></li>
+                        <li><a [routerLink]="['/authentication/login']" *ngIf="!isLogedIn" >Login</a></li>
+                        <li><a [routerLink]="['/authentication/register']"  *ngIf="!isLogedIn">Create Account</a></li>
+                        <li><a [routerLink]="['']" (click)="logout()" *ngIf="isLogedIn">Log out</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,7 +36,7 @@
             	<!--Desktop Logo-->
                 <div  style="width: 164px;">
                     <a href="index.html">
-                    	<img src="http://dmsegypt.net/wp-content/uploads/2018/09/logo-300x131.png" alt="DMS Demo" title="DMS Demo" />
+                    	<img src="../../../../assets//images/DMSLogo.png" alt="DMS Demo" title="DMS Demo" />
                     </a>
                 </div>
                 <!--End Desktop Logo-->
@@ -52,7 +52,7 @@
                         <ul id="siteNav" class="site-nav medium center hidearrow">
                             <li class="lvl1 parent megamenu"><a [routerLink]="['']">Home <i class="anm anm-angle-down-l"></i></a>
                             </li>
-                            <li class="lvl1 parent megamenu"><a [routerLink]="['/order']">Orders <i class="anm anm-angle-down-l"></i></a>
+                            <li class="lvl1 parent megamenu" *ngIf="isAdmin"><a [routerLink]="['/order']">Orders <i class="anm anm-angle-down-l"></i></a>
                             </li>
                       </ul>
                     </nav>

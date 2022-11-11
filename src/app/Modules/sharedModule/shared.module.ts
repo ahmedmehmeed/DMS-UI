@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../../Shared/Components/layout/header/header.component';
 import { FooterComponent } from '../../../Shared/Components/layout/footer/footer.component';
 import { LayoutComponent } from '../../../Shared/Components/layout/layout.component';
-import { ToastrModule } from 'ngx-toastr';
+import {  ToastrModule } from 'ngx-toastr';
 import { AlertModule} from 'ngx-bootstrap/alert';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,7 +22,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     RouterModule,
     ToastrModule.forRoot({positionClass:'toast-bottom-right'}),
-    ToastrModule,
     AlertModule.forRoot(),
     NgxSpinnerModule,
     FormsModule,

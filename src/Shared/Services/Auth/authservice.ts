@@ -16,6 +16,7 @@ import{register} from '../../Models/Auth/register'
 export class AuthService {
 
   isLogedIn=new BehaviorSubject<boolean>(this.isTokenAvailable());
+  isAdmin=new BehaviorSubject<boolean>(this.checkAdminRole());
   private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient,private router : Router){ }
 
@@ -24,9 +25,9 @@ return this.http.post(this.apiUrl+ApiRoutes.account.login,login).pipe(
   tap((res:any)=>{
     if(res.isSuccess){
       localStorage.setItem(LocalStorageKeys.JWT,res.token)
-      localStorage.setItem(LocalStorageKeys.UserId,res.userId)
+      localStorage.setItem(LocalStorageKeys.Roles,res.roles)
       this.setLogedIn(true)
-      console.log(this.isLogedIn.value)
+      this.setRoles(this.checkAdminRole()); 
     this.router.navigate([appRoutes.items.full]); 
     }
   })
@@ -38,6 +39,7 @@ register(register:register){
     tap((res:any)=>{
       if(res.isSuccess){
         localStorage.setItem(LocalStorageKeys.JWT,res.token)
+        localStorage.setItem(LocalStorageKeys.Roles,res.roles)
         this.setLogedIn(true)
         this.router.navigate([appRoutes.items.full]);  
       }
@@ -48,7 +50,9 @@ register(register:register){
 
 logout(){
   this.setLogedIn(false)
+  this.setRoles(false)
   localStorage.removeItem(LocalStorageKeys.JWT)
+  localStorage.removeItem(LocalStorageKeys.Roles)
   this.router.navigate([appRoutes.items.sub]);
 }
 
@@ -56,12 +60,27 @@ setLogedIn(isLogedIn:boolean){
 this.isLogedIn.next(isLogedIn);
 }
 
-getLogedIn(): BehaviorSubject<boolean>{
+  getLogedIn(): BehaviorSubject<boolean>{
   return this.isLogedIn;
   }
+
+  setRoles(isAdmin:boolean){
+    this.isAdmin.next(isAdmin);
+    }
+  getRoles(): BehaviorSubject<boolean>{
+    return this.isAdmin;
+    }
 
   private isTokenAvailable(): boolean {
     return !!localStorage.getItem(LocalStorageKeys.JWT);
   }
+
+  private checkAdminRole(): boolean {
+    if(localStorage.getItem(LocalStorageKeys.Roles)=="Admin")
+       return true;
+    else
+    return false
+  }
+  
 
 }

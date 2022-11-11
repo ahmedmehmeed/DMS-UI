@@ -3,6 +3,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { item } from '../../../../Shared/Models/Item/item';
 import { ItemService } from '../../../../Shared/Services/Item/item.service';
+import { OrderService } from '../../../../Shared/Services/Order/order.service';
 
 @Component({
   selector: 'app-product',
@@ -15,6 +16,7 @@ export class ProductComponent implements OnInit {
     private itemsService:ItemService,
     private toastr:ToastrService,
     private spinner: NgxSpinnerService ,
+    private orderService:OrderService
     ) { }
 
   /*   State */
@@ -41,11 +43,17 @@ export class ProductComponent implements OnInit {
       ()=>{
         this.isLoading=false
         this.spinner.hide();  
-      }
-      
-    )
+      })
   }
 
-  
-  
+  addOrder(item:item){
+  this.orderService.AddOrder(item.id).subscribe(
+    (res)=>{
+    this.toastr.success("Order Add Successfully!")
+    },
+    (err)=>{
+      this.toastr.error("Failed To Add Order !")
+    }
+  )
+  }
 }

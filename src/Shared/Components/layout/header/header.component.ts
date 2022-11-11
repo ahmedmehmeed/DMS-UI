@@ -14,43 +14,43 @@ export class HeaderComponent implements OnInit {
 
  
  /*   UI */
-
+ isAdmin:boolean=false; 
  isLogedIn:boolean;
  isSubmittedlogin:boolean=false;
 
   constructor(
     private authService:AuthService,
-    private modalService: NgbModal
     ) { }
 
   ngOnInit(): void {
     this.watchLoginState();
+    this.watchrRolesState();
   }
 
-  openVerticallyCenteredMd(content){
-    this.modalService.open(content, {
-      centered: true,
-      size: "md",
-      scrollable: true,
-    });
-  }
+
 
   private watchLoginState(): void {
     // Watch authentication status changes
-    this.authService.isLogedIn.subscribe((isLoggedIn) => {
+    this.authService.getLogedIn().subscribe((isLoggedIn) => {
       this.isLogedIn = isLoggedIn;
       console.log("cvsdfb",this.isLogedIn)
     });
-  }
+  } 
+
+  private watchrRolesState(): void {
+    // Watch authentication status changes
+    this.authService.getRoles().subscribe((isAdmin) => {
+      this.isAdmin = isAdmin;
+      console.log("roles",this.isAdmin)
+    });
+  } 
+
 
   logout(){
     this.authService.logout();
-    this.watchLoginState();
   }
   
-  clearData() {
-    this.modalService.dismissAll("Cross click");
-  }
+
   
 
 
